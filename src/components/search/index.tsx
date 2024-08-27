@@ -1,6 +1,6 @@
-import { Icon, Search as Icone } from "lucide-react"
+import { Search as SearchIcon } from "lucide-react"
 
-export default function SearchIcon (){
+export default function Search (){
     return(
         <form className="flex basis-full" autoComplete="off">
             <div className="flex w-full flex-col items-center gap-6 my -10">
