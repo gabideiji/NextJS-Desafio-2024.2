@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Search as SearchIcon } from "lucide-react";
 
+
 const links = [
     { href: '/posts', label: 'Publicacoes' },
     { href: '/admin', label: 'Admin' }
@@ -31,7 +32,7 @@ export default function Header() {
             <div className="flex flex-wrap items-center justify-between w-full md:w-10/12 mx-auto">
                 <Link href='/' className="flex gap-4 items-center">
                     <Image
-                        src='/logo/logo.svg'
+                        src='/logo/sanrio.svg'
                         alt="Logo do site"
                         width={904}
                         height={904}
@@ -79,6 +80,19 @@ export default function Header() {
                         }
                     </div>
                 </nav>
+                {isSearchOpen && (
+                    <search />
+                ) }
+
+                {isNavOpen && (
+                    <div className="md:hidden flex basis-full flex-col items-center gap-6 mt-10">
+                         {links.map((link, index)=> 
+                        <Link href={link.href} key={index}>
+                            <span className="text 2xl text-white hover:bg-white/20 p-2 rounded-xl">{link.label}</span>
+                        </Link>
+                    )}
+                        </div>
+                )}
             </div>
         </header>
     );
