@@ -43,7 +43,6 @@ export default function Header() {
                 </Link>
                 <nav className='flex justify-end'>
                     <div className='hidden w-full md:flex justify-end items-center gap-16'>
-                        <button onClick={toggleNav}>
                             {isSearchOpen ?
                                 <X
                                     onClick={toggleSearch}
@@ -52,7 +51,6 @@ export default function Header() {
                                 :
                                 <SearchIcon className="w-10 h-10 text-white cursor-pointer hover:bg-white/20 transition-all duration-200 p-1 rounded-xl" />
                             }
-                        </button>
                     {links.map((link, index)=> 
                         <Link href={link.href} key={index}>
                             <span className="text 2xl text-white hover:bg-white/20 p-2 rounded-xl">{link.label}</span>
