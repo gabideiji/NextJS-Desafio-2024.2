@@ -1,14 +1,14 @@
-import Image from "next/image";
-import Header from "../components/search/header";
-import HeroSection from "@/components/search/hero-section";
+import Header from "@/components/header";
+import HeroSection from "@/components/hero-section";
+import LandingPage from "@/components/landing-page"
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <div className="w-10/12 max-auto">
-        <HeroSection />
-      </div>
-    </>
+    <div className=" space-y-24 md:space-y-32 w-full py-8 px-4 md:p-0 min-h-screen max-auto">
+    <Header />
+    <HeroSection />
+    <LandingPage />
+    </div>
+
   );
 }
