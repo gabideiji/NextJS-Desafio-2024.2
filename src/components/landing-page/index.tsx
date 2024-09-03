@@ -41,7 +41,14 @@ export default function LandingPage() {
             description="Bolsa para moedas do Pochaco"/>
              
         </div>
-        
+        <div className="flex items-center justify-center my-8">
+                <button 
+                    style={{ backgroundColor: '#FF9E9E' }}
+                    className="text-white px-6 py-2 rounded-md font-semibold text-lg hover:bg-pink-300 transition duration-300"
+                >
+                    Ver mais
+                </button>
+            </div>
      </div>
     );
   }
