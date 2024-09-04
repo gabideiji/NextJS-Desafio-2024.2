@@ -1,6 +1,7 @@
 import Header from "@/components/header";
 import HeroSection from "@/components/hero-section";
 import LandingPage from "@/components/landing-page"
+import Personagens from "@/components/personagens";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
     <Header />
     <HeroSection />
     <LandingPage />
+    <Personagens />
     </div>
 
   );
