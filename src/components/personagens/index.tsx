@@ -1,16 +1,32 @@
+import Image from "next/image";
 import Title from "../title";
-import PersonagensCard from "./cards";
-export default function Personagens (){
-    return (
-        <div className="w-full space-y-12">
-            <Title title="Compre pelo seu personagem favorito!" subtitle="Em Destaque" />
-            <PersonagensCard />
-            <PersonagensCard />
-            <PersonagensCard />
-            <PersonagensCard />
-            <PersonagensCard />
-            <PersonagensCard />
+import CardsProdutos from "./bonecas";
+import CardsPersonagens from "./bonecas";
 
+export default function LandingPage() {
+    return (
+     <div className="w-full space-y-12">
+        <Title title="Compre por personagem!" subtitle="Em destaque"/>
+        <div className="flex flex-wrap gap-4 justify-center">
+            <CardsPersonagens 
+            src="/logo/kuromi.jpg"
+            title="Kuromi" 
+            />
+            <CardsPersonagens 
+            src="/logo/littletwinstars.jpg"
+            title="Little Twin Stars" 
+            />
+            <CardsPersonagens 
+            src="/logo/mymelo.jpg"
+            title="My Melody" 
+            />
+            <CardsPersonagens 
+            src="/logo/cinnamonroll.jpg"
+            title="Cinnamoroll" 
+            />
         </div>
-    )
-}
+        
+     </div>
+    );
+  }
+  
