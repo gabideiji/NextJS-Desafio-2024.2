@@ -9,6 +9,7 @@ import { Search as SearchIcon } from "lucide-react";
 const links = [
     { href: '/posts', label: 'Publicacoes' },
     { href: '/admin', label: 'Admin' }
+    
 ];
 
 export default function Header() {
@@ -28,18 +29,16 @@ export default function Header() {
     };
 
     return (
-        <header style={{ backgroundColor: '#FF9E9E' }} className="top-0 z-20 mx-auto w-full py-8 px-4 md:p-0 mb-8">
+        <header style={{ backgroundColor: '#FF9E9E' }} className="top-0 z-20 mx-auto w-full py-6 px-6 md:p-8 mb-8 border-b border-pink-300">
             <div className="flex flex-wrap items-center justify-between w-full md:w-10/12 mx-auto">
                 <Link href='/' className="flex gap-4 items-center">
-                    <Image
-                        src='/logo/sanrio.svg'
-                        alt="Logo do site"
-                        width={904}
-                        height={904}
-                        className="h-20 w-20 rounded-xl"
-                    />
-                    <span className='text-white hidden md:block text-3xm font-semibold'> |</span>
-                    <span className='text-white hidden md:block text-3xm font-semibold'>Kitty Shop </span>
+                <Image
+            src='/logo/sanrio.svg'
+            alt="Logo do site"
+            width={904}
+            height={904}
+            className="h-24 w-24 rounded-xl"
+/>
                 </Link>
                 <nav className='flex justify-end'>
                     <div className='hidden w-full md:flex justify-end items-center gap-16'>
