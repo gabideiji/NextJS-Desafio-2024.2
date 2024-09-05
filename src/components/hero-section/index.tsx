@@ -5,7 +5,7 @@ import Carrossel from "../carrossel";
 export default function HeroSection() {
     return (
         <div>
-<div className="relative rounded-xl overflow-hidden w-full max-w-4xl mx-auto -mt-20">
+<div className="relative rounded-xl overflow-hidden w-full max-w-4xl mx-auto">
                 <Carrossel />
             </div>
             <div className="flex flex-wrap justify-center gap-4 w-full">
