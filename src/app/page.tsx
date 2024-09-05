@@ -2,6 +2,7 @@ import Header from "@/components/header";
 import HeroSection from "@/components/hero-section";
 import LandingPage from "@/components/landing-page"
 import Personagens from "@/components/personagens";
+import MissaoVisao from "@/components/missaovisao";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
     <HeroSection />
     <LandingPage />
     <Personagens />
+    <MissaoVisao />
     </div>
 
   );
