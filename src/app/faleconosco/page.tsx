@@ -25,6 +25,18 @@ export default function FaleConosco() {
           Sanrio podem iluminar o seu dia a dia. Obrigado por nos visitar!
         </p>
       </div>
+      <div className="flex flex-col flex-grow justify-center gap-8 p-4 w-4/12">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-gray-700 text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold">
+            Sobre a Sanrio:
+          </h1>
+        </div>
+        <p className="text-gray-700 text-lg lg:text-xl 2xl:text-2xl 3xl:text-4xl leading-relaxed">
+        A Sanrio Company, Ltd. (株式会社サンリオ Kabushikigaisha Sanrio?) é uma empresa japonesa que projeta, licencia e produz produtos com foco no segmento kawaii ("fofo") da cultura popular japonesa. Seus produtos incluem artigos de papelaria, material escolar, presentes e acessórios que são vendidos em todo o mundo, inclusive em lojas de varejo de marcas especializadas no Japão. A personagem mais conhecida da Sanrio é a Hello Kitty, uma gatinha de desenho animado e uma das marcas de marketing mais bem sucedidas do mundo.
+
+Além de vender produtos de personagens, a Sanrio participa da produção e edição de filmes. Eles possuem os direitos dos personagens Mr. Men e os direitos de licenciamento japonês dos personagens Peanuts. Seu ramo de animatrônicos, chamado Kokoro Company, Ltd. (kokoro sendo japonês para 'coração') é mais conhecido pelo andróide Actroid. A empresa também administra uma franquia da KFC na província de Saitama.
+        </p>
+      </div>
       <div className="w-3/4 mx-auto border-t-4 border-[#FF9E9E] my-8"></div>
       <div className="flex flex-col flex-grow justify-center gap-8 p-4 w-4/12">
         <div className="flex flex-col gap-2">
