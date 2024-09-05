@@ -5,7 +5,7 @@ import '@splidejs/react-splide/css';
 import Image from "next/image";
 export default function Carrossel() {
     return (
-        <Splide aria-label="My Favorite Images">
+        <Splide aria-label="My Favorite Images" options={{type:"loop", autoplay:true, interval:3000}}>
             <SplideSlide>
                 <Image src="/logo/a.jpg" 
                 width={1200}
