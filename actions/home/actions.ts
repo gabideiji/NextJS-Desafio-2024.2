@@ -8,6 +8,7 @@ export default async function getProdutosLanding(){
         select:{
             id: true,
             title: true,
+            description: true,
             price: true,
             image: true
         },

@@ -20,7 +20,7 @@ export default function CardsProdutos({posts}:CardProps){
             />
             <h1 className="text-center text-xl xl:text-2xl 2xl:text-3xl 3xl:text-4x text-pink-950 
             font-semibold cursor-default">{posts.title}</h1>
-            <p className="text-gray-900 text-lg lg:text-xl 2xl:text-2xl 3xl:text-3xl text-center line-clamp-6 cursor-default">{posts.title}</p>
+            <p className="text-gray-900 text-lg lg:text-xl 2xl:text-2xl 3xl:text-3xl text-center line-clamp-6 cursor-default">{posts.description}</p>
             <button 
                 style={{ backgroundColor: '#FF9E9E' }} 
                 className="text-white px-4 py-2 rounded-md font-semibold text-md hover:bg-pink-300 transition duration-300"
