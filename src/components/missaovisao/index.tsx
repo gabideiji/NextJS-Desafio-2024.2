@@ -26,7 +26,10 @@ export default function ApiComponent() {
     }, []);
 
     return (
-        <div className="flex items-center justify-center w-full bg-[#FFD1D1] p-8 overflow-hidden rounded-lg">
+        <div>
+            
+             <div className="flex items-center justify-center w-full bg-[#FFD1D1] p-8 overflow-hidden rounded-lg">
+            
             <div className="flex flex-col md:flex-row gap-8 w-full">
                 {cards.map((card) => {
                     return (
@@ -36,7 +39,14 @@ export default function ApiComponent() {
                         </div>
                     );
                 })}
+                
             </div>
+            
         </div>
+        <div className="w-3/4 mx-auto border-t-4 border-[#FF9E9E] my-8"></div>
+
+        </div>
+        
+        
     );
 }
