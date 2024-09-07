@@ -20,7 +20,6 @@ export default async function Pesquisa({
 
     return (
         <div >
-            <Search />
             <div className="flex gap-14 flex-wrap items-center justify-center">
                 {posts.map((post) => (
                     <CardsProdutos key={post.id} posts={post} />
