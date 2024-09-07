@@ -27,3 +27,22 @@ export async function maisprodutos (){
     })
     return posts
 }
+
+export async function GetPesquisa(query: string) {
+    const posts = await prisma.product.findMany({
+        where: {
+            OR: [
+                { title: { contains: query, mode: "insensitive" } },
+                { description: { contains: query, mode: "insensitive" } },
+            ],
+        },
+        select: {
+            id: true,
+            title: true,
+            description: true,
+            price: true,
+            image: true
+        },
+    })
+    return posts
+}
