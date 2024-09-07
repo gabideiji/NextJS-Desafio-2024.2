@@ -20,6 +20,8 @@ export default function CardsProdutos({posts}:CardProps){
             />
             <h1 className="text-center text-xl xl:text-2xl 2xl:text-3xl 3xl:text-4x text-pink-950 
             font-semibold cursor-default">{posts.title}</h1>
+            <h2 className="text-center text-xl xl:text-2xl 2xl:text-3xl 3xl:text-4x text-pink-950 
+            font-semibold cursor-default">R$ {posts.price}</h2>
             <p className="text-gray-900 text-lg lg:text-xl 2xl:text-2xl 3xl:text-3xl text-center line-clamp-6 cursor-default">{posts.description}</p>
             <button 
                 style={{ backgroundColor: '#FF9E9E' }} 

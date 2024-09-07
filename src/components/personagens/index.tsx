@@ -6,7 +6,7 @@ import CardsPersonagens from "./bonecas";
 export default function LandingPage() {
     return (
      <div className="w-full space-y-12">
-        <Title title="Compre por personagem!" subtitle="Em destaque"/>
+        <Title title="Conheça nossos personagens!" subtitle="Em destaque"/>
         <div className="flex flex-wrap gap-4 justify-center">
         <CardsPersonagens 
             src="/logo/kuromi.jpg"
