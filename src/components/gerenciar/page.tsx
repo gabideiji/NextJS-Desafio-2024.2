@@ -1,8 +1,8 @@
 'use client';
 
-import AddProdutoModal from '@/components/modaladiciona';
-import EditProdutoModal from '@/components/modaledita';
 import { useState, useCallback } from 'react';
+import AddProdutoModal from '@/components/modaladiciona';
+import EditProdutoModal from '@/components/modaledita'; // Modal para editar produto
 
 const Gerenciamento = ({ dados = [] }) => {
   const [isAddModalOpen, setAddModalOpen] = useState(false);
