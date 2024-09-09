@@ -84,3 +84,14 @@ export async function AddProduto (produto: { title: string, description: string,
         }
     })
 }
+export async function EditaProduto(produto: { id: number, title: string, description: string, price: number, image: string }) {
+    await prisma.product.update({
+        where: { id: produto.id }, 
+        data: {
+            title: produto.title,
+            description: produto.description,
+            price: produto.price,
+            image: produto.image
+        }
+    })
+}

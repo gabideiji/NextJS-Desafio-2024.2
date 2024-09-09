@@ -15,11 +15,10 @@ const AddProdutoModal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) =>
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Converta o preço para número antes de chamar onSubmit
         const priceNumber = parseFloat(price);
         
         if (isNaN(priceNumber)) {
-            alert('Preço inválido'); // Adicione uma mensagem de erro apropriada se necessário
+            alert('Preço inválido'); 
             return;
         }
 

@@ -1,37 +1,51 @@
-import { title } from 'process';
 import React, { useState, useEffect } from 'react';
 
-type EditModalProps = {
+type ModalProps = {
     isOpen: boolean;
     onClose: () => void;
-    onSubmit: (produto: { title: string, description: string, price: number, image: string }) => void;
-    produtoInicial: { title: string, description: string, price: number, image: string };
-}
+    onSubmit: (produto: { id: number; title: string; description: string; price: number; image: string }) => void;
+    initialData?: { id: number; title: string; description: string; price: number; image: string };
+};
 
-const EditProdutoModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSubmit, produtoInicial }) => {
-    const [title, setNome] = useState(produtoInicial.title);
-    const [description, setDescricao] = useState(produtoInicial.description);
-    const [price, setPreco] = useState(produtoInicial.price);
-    const [image, setImg] = useState(produtoInicial.image);
+const EditaModal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit, initialData }) => {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
+    const [image, setImage] = useState('');
 
     useEffect(() => {
-        if (isOpen) {
-            setNome(produtoInicial.title);
-            setDescricao(produtoInicial.description);
-            setPreco(produtoInicial.price);
-            setImg(produtoInicial.image);
+        if (initialData) {
+            setTitle(initialData.title);
+            setDescription(initialData.description);
+            setPrice(initialData.price.toString());
+            setImage(initialData.image);
+        } else {
+            setTitle('');
+            setDescription('');
+            setPrice('');
+            setImage('');
         }
-    }, [isOpen, produtoInicial]);
+    }, [initialData]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        onSubmit({
-            title,
-            description,
-            price,
-            image,
-        });
+        const priceNumber = parseFloat(price);
+
+        if (isNaN(priceNumber)) {
+            alert('Preço inválido');
+            return;
+        }
+
+        if (initialData) {
+            onSubmit({
+                id: initialData.id,
+                title,
+                description,
+                price: priceNumber,
+                image
+            });
+        }
 
         onClose();
     };
@@ -48,7 +62,7 @@ const EditProdutoModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSubmit,
                         <input
                             type="text"
                             value={title}
-                            onChange={(e) => setNome(e.target.value)}
+                            onChange={(e) => setTitle(e.target.value)}
                             className="mt-1 block w-full p-2 border border-pink-300 rounded-md"
                             required
                         />
@@ -57,8 +71,8 @@ const EditProdutoModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSubmit,
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-pink-700">Descrição</label>
                         <textarea
-                            value={descricao}
-                            onChange={(e) => setDescricao(e.target.value)}
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                             className="mt-1 block w-full p-2 border border-pink-300 rounded-md"
                             required
                         />
@@ -68,8 +82,8 @@ const EditProdutoModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSubmit,
                         <label className="block text-sm font-medium text-pink-700">Preço</label>
                         <input
                             type="text"
-                            value={preco}
-                            onChange={(e) => setPreco(e.target.value)}
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
                             className="mt-1 block w-full p-2 border border-pink-300 rounded-md"
                             required
                         />
@@ -79,8 +93,8 @@ const EditProdutoModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSubmit,
                         <label className="block text-sm font-medium text-pink-700">Caminho da Imagem</label>
                         <input
                             type="text"
-                            value={img}
-                            onChange={(e) => setImg(e.target.value)}
+                            value={image}
+                            onChange={(e) => setImage(e.target.value)}
                             className="mt-1 block w-full p-2 border border-pink-300 rounded-md"
                             required
                         />
@@ -88,7 +102,7 @@ const EditProdutoModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSubmit,
 
                     <div className="flex justify-end">
                         <button type="button" onClick={onClose} className="bg-pink-500 text-white px-4 py-2 rounded mr-2">Cancelar</button>
-                        <button type="submit" className="bg-pink-700 text-white px-4 py-2 rounded">Salvar</button>
+                        <button type="submit" className="bg-pink-700 text-white px-4 py-2 rounded">Salvar Alterações</button>
                     </div>
                 </form>
             </div>
@@ -96,4 +110,4 @@ const EditProdutoModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSubmit,
     );
 };
 
-export default EditProdutoModal;
+export default EditaModal;

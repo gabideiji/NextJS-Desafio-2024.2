@@ -1,37 +1,38 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import AddProdutoModal from '@/components/modaladiciona';
-import EditProdutoModal from '@/components/modaledita'; // Modal para editar produto
+import ProdutoModal from '@/components/modaladiciona'; 
 import { LandingPagePosts } from '../../../types/home/home';
-import { DeleteProduto, AddProduto } from '../../../actions/home/actions'; // Certifique-se de ter AddProduto exportado de actions
+import { DeleteProduto, AddProduto, EditaProduto } from '../../../actions/home/actions';
+import EditaModal from '../modaledita';
 
 const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [selectedProduto, setSelectedProduto] = useState<LandingPagePosts | null>(null);
 
-  const toggleAddModal = useCallback(() => setAddModalOpen((prev) => !prev), []);
-  const toggleEditModal = useCallback(() => setEditModalOpen((prev) => !prev), []);
+  const toggleAddModal = useCallback(() => setAddModalOpen(prev => !prev), []);
+  const toggleEditModal = useCallback(() => setEditModalOpen(prev => !prev), []);
 
-  const handleAddGerenciar = async (produto: { title: string, description: string, price: number, image: string }) => {
+  const handleAddProduto = async (produto: { title: string; description: string; price: number; image: string }) => {
     try {
-      await AddProduto(produto); // Use a função correta para adicionar o produto
+      await AddProduto(produto);
       console.log("Produto adicionado com sucesso");
-      window.location.reload();
+      window.location.reload()
+
     } catch (error) {
       console.error("Erro ao adicionar o produto:", error);
     }
   };
 
-  const handleEditProduto = async (produto: { id: number, title: string, description: string, price: number, image: string }) => {
-    // try {
-    //   await EditProdutoModal(produto); // Use a função correta para editar o produto
-    //   console.log("Produto editado com sucesso");
-    //   window.location.reload();
-    // } catch (error) {
-    //   console.error("Erro ao editar o produto:", error);
-    // }
+  const handleEditProduto = async (produto: { id: number; title: string; description: string; price: number; image: string }) => {
+    try {
+      await EditaProduto(produto);
+      console.log("Produto editado com sucesso");
+      window.location.reload()
+    } catch (error) {
+      console.error("Erro ao editar o produto:", error);
+    }
   };
 
   return (
@@ -43,20 +44,20 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
         Adicionar Produto
       </button>
 
-      <AddProdutoModal
+      <ProdutoModal
         isOpen={isAddModalOpen}
         onClose={toggleAddModal}
-        onSubmit={handleAddGerenciar}
+        onSubmit={handleAddProduto}
       />
 
-      {/* {selectedProduto && (
-        <EditProdutoModal
+      {selectedProduto && (
+        <EditaModal
           isOpen={isEditModalOpen}
           onClose={toggleEditModal}
-          // onSubmit={handleEditProduto}
-          // initialData={selectedProduto}
+          onSubmit={handleEditProduto}
+          initialData={selectedProduto}
         />
-      )} */}
+      )}
 
       <table className="min-w-full bg-white text-left rounded-md">
         <thead>
@@ -68,8 +69,8 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
         </thead>
         <tbody>
           {dados.length > 0 ? (
-            dados.map((produto, index) => (
-              <tr key={index}>
+            dados.map((produto) => (
+              <tr key={produto.id}>
                 <td className="py-2 px-4 border-b">{produto.title}</td>
                 <td className="py-2 px-4 border-b">${produto.price}</td>
                 <td className="py-2 px-4 border-b flex justify-center gap-2">
@@ -88,7 +89,8 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
                       try {
                         await DeleteProduto(produto.id);
                         console.log("Produto deletado com sucesso");
-                        window.location.reload();
+                              window.location.reload()
+
                       } catch (error) {
                         console.error("Erro ao deletar o produto:", error);
                       }
