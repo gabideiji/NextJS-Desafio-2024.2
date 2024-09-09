@@ -74,6 +74,15 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
                 <td className="py-2 px-4 border-b">{produto.title}</td>
                 <td className="py-2 px-4 border-b">R${produto.price}</td>
                 <td className="py-2 px-4 border-b flex justify-center gap-2">
+                <button
+                    className="bg-blue-500 text-white px-2 py-1 rounded"
+                    onClick={() => {
+                      setSelectedProduto(produto);
+                      toggleEditModal();
+                    }}
+                  >
+                    Visualizar
+                  </button>
                   <button
                     className="bg-blue-500 text-white px-2 py-1 rounded"
                     onClick={() => {

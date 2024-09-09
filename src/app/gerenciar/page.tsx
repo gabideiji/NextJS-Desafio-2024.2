@@ -31,7 +31,7 @@ function PaginaTabelaContent() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center mt-8">Tabela de Livros</h1>
+      <h1 className="text-2xl font-bold text-center mt-8">Tabela de Produtos</h1>
       <Gerenciamento dados={posts} />
       <Paginacao totalPages={totalPages} />
     </div>
