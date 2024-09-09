@@ -46,3 +46,31 @@ export async function GetPesquisa(query: string) {
     })
     return posts
 }
+export async function GetGerenciamento (currentPage: number) {
+    const offset = (currentPage - 1) * 8
+    const posts = await prisma.product.findMany({
+        select: {
+            id: true,
+            title: true,
+            description: true,
+            price: true,
+            image: true
+        },
+        take: 8,
+        skip: offset,
+        orderBy: {
+            createdAt: 'desc'
+        }
+    })
+    const count = await prisma.product.count();
+    const totalPages = Math.ceil(count / 8);
+
+    return { posts, count, totalPages }
+}
+export async function DeleteProduto (id: number | undefined) {
+    await prisma.product.delete({
+        where: {
+            id: id
+        }
+    })
+}

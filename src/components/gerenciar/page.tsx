@@ -3,8 +3,10 @@
 import { useState, useCallback } from 'react';
 import AddProdutoModal from '@/components/modaladiciona';
 import EditProdutoModal from '@/components/modaledita'; // Modal para editar produto
+import { LandingPagePosts } from '../../../types/home/home';
+import { DeleteProduto } from '../../../actions/home/actions';
 
-const Gerenciamento = ({ dados = [] }) => {
+const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [selectedProduto, setSelectedProduto] = useState(null);
@@ -31,15 +33,7 @@ const Gerenciamento = ({ dados = [] }) => {
     toggleEditModal();
   };
 
-  const handleDeleteProduto = async (id) => {
-    try {
-      console.log("Produto deletado com sucesso", id);
-      window.location.reload();
-    } catch (error) {
-      console.error("Erro ao deletar o produto:", error);
-    }
-  };
-
+  
   return (
     <div className="overflow-x-auto p-10">
       <button 
@@ -76,8 +70,8 @@ const Gerenciamento = ({ dados = [] }) => {
           {dados.length > 0 ? (
             dados.map((produto, index) => (
               <tr key={index}>
-                <td className="py-2 px-4 border-b">{produto.nome}</td>
-                <td className="py-2 px-4 border-b">{produto.valor}</td>
+                <td className="py-2 px-4 border-b">{produto.title}</td>
+                <td className="py-2 px-4 border-b">R${produto.price}</td>
                 <td className="py-2 px-4 border-b flex justify-center gap-2">
                   <button
                     className="bg-blue-500 text-white px-2 py-1 rounded"
@@ -90,7 +84,10 @@ const Gerenciamento = ({ dados = [] }) => {
                   </button>
                   <button
                     className="bg-red-500 text-white px-2 py-1 rounded"
-                    onClick={() => handleDeleteProduto(produto.id)}
+                    onClick={() => {
+                     DeleteProduto(produto.id);
+                      window.location.reload();
+                    }}
                   >
                     Deletar
                   </button>
@@ -99,9 +96,9 @@ const Gerenciamento = ({ dados = [] }) => {
             ))
           ) : (
             <tr>
-              <td colSpan="3" className="py-4 text-center">
-                Nenhum produto disponível
-              </td>
+              <td colSpan={3} className="py-4 text-center">
+          Nenhum produto disponível
+            </td>
             </tr>
           )}
         </tbody>
