@@ -5,21 +5,23 @@ import ProdutoModal from '@/components/modaladiciona';
 import { LandingPagePosts } from '../../../types/home/home';
 import { DeleteProduto, AddProduto, EditaProduto } from '../../../actions/home/actions';
 import EditaModal from '../modaledita';
+import VisualizaModal from '../modalvisu'; 
 
 const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [isViewModalOpen, setViewModalOpen] = useState(false); 
   const [selectedProduto, setSelectedProduto] = useState<LandingPagePosts | null>(null);
 
   const toggleAddModal = useCallback(() => setAddModalOpen(prev => !prev), []);
   const toggleEditModal = useCallback(() => setEditModalOpen(prev => !prev), []);
+  const toggleViewModal = useCallback(() => setViewModalOpen(prev => !prev), []); 
 
   const handleAddProduto = async (produto: { title: string; description: string; price: number; image: string }) => {
     try {
       await AddProduto(produto);
       console.log("Produto adicionado com sucesso");
-      window.location.reload()
-
+      window.location.reload();
     } catch (error) {
       console.error("Erro ao adicionar o produto:", error);
     }
@@ -29,7 +31,7 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
     try {
       await EditaProduto(produto);
       console.log("Produto editado com sucesso");
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       console.error("Erro ao editar o produto:", error);
     }
@@ -59,6 +61,14 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
         />
       )}
 
+      {selectedProduto && (
+        <VisualizaModal
+          isOpen={isViewModalOpen}  // Condição para abrir o modal de visualização
+          onClose={toggleViewModal} // Função de fechar o modal
+          initialData={selectedProduto} // Dados do produto selecionado
+        />
+      )}
+
       <table className="min-w-full bg-white text-left rounded-md">
         <thead>
           <tr>
@@ -74,20 +84,20 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
                 <td className="py-2 px-4 border-b">{produto.title}</td>
                 <td className="py-2 px-4 border-b">R${produto.price}</td>
                 <td className="py-2 px-4 border-b flex justify-center gap-2">
-                <button
-                    className="bg-blue-500 text-white px-2 py-1 rounded"
+                  <button
+                    className="bg-pink-400 text-white px-2 py-1 rounded"
                     onClick={() => {
                       setSelectedProduto(produto);
-                      toggleEditModal();
+                      toggleViewModal(); 
                     }}
                   >
                     Visualizar
                   </button>
                   <button
-                    className="bg-blue-500 text-white px-2 py-1 rounded"
+                    className="bg-pink-400 text-white px-2 py-1 rounded"
                     onClick={() => {
                       setSelectedProduto(produto);
-                      toggleEditModal();
+                      toggleEditModal(); 
                     }}
                   >
                     Editar
@@ -98,8 +108,7 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
                       try {
                         await DeleteProduto(produto.id);
                         console.log("Produto deletado com sucesso");
-                              window.location.reload()
-
+                        window.location.reload();
                       } catch (error) {
                         console.error("Erro ao deletar o produto:", error);
                       }
