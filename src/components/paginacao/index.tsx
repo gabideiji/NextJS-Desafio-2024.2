@@ -12,8 +12,7 @@ export default function Pagination({totalPages}: {totalPages: number}) {
 
     const createPageURL = (pageNumber: number | string) => {
         const params = new URLSearchParams(searchParams)
-        params.set('page', "1")
-        params.set("page", pageNumber.toString())
+        params.set('page', pageNumber.toString())
         return `${pathname}?${params.toString()}`
     }
 
@@ -75,9 +74,10 @@ function PaginationNumber({
         {
             'rounded-l-md': position === 'first' || position === 'single',
             'rounded-r-md': position === 'last' || position === 'single',
-            'z-10 bg-blue-600 border-blue-600 text-white': isActive,
-            'hover:bg-gray-100': !isActive && position !== 'middle',
-            'text-gray-300': position === 'middle',
+            'z-10 bg-[#FF9E9E] border-[#FF9E9E] text-white': isActive,
+            'hover:bg-pink-100 transition duration-300': !isActive && position !== 'middle',
+            'text-pink-300': position === 'middle',
+            'border-pink-300 text-pink-700': !isActive,
         },
     );
 
@@ -103,7 +103,8 @@ function PaginationArrow({
         'flex h-10 w-10 items-center justify-center rounded-md border',
         {
             'pointer-events-none text-gray-300': isDisabled,
-            'hover:bg-gray-100': !isDisabled,
+            'hover:bg-pink-100 transition duration-300': !isDisabled,
+            'border-[#FF9E9E] text-pink-700': !isDisabled,
             'mr-2 md:mr-4': direction === 'left',
             'ml-2 md:ml-4': direction === 'right',
         },
@@ -126,16 +127,13 @@ function PaginationArrow({
 }
 
 const generatePagination = (currentPage: number, totalPages: number) => {
-   
     if (totalPages <= 7) {
         return Array.from({ length: totalPages }, (_, i) => i + 1);
     }
 
-   
     if (currentPage <= 3) {
         return [1, 2, 3, '...', totalPages - 1, totalPages];
     }
-
 
     if (currentPage >= totalPages - 2) {
         return [1, 2, '...', totalPages - 2, totalPages - 1, totalPages];

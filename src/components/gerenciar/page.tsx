@@ -63,9 +63,9 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
 
       {selectedProduto && (
         <VisualizaModal
-          isOpen={isViewModalOpen}  // Condição para abrir o modal de visualização
-          onClose={toggleViewModal} // Função de fechar o modal
-          initialData={selectedProduto} // Dados do produto selecionado
+          isOpen={isViewModalOpen}  
+          onClose={toggleViewModal} 
+          initialData={selectedProduto}
         />
       )}
 

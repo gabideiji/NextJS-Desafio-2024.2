@@ -10,7 +10,7 @@ const VisualizaModal: React.FC<ModalProps> = ({ isOpen, onClose, initialData }) 
   if (!isOpen || !initialData) return null;
 
   return (
-    <div className="z-50 fixed inset-0 bg-pink-700 bg-opacity-50 flex justify-center items-center">
+    <div className="z-50 fixed inset-0 bg-pink-700 bg-opacity-50 flex justify-center items-center overflow-scroll">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-xl font-bold mb-4 text-pink-500">Detalhes do Produto</h2>
         
