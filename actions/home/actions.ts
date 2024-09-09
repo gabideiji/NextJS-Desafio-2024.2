@@ -59,7 +59,7 @@ export async function GetGerenciamento (currentPage: number) {
         take: 8,
         skip: offset,
         orderBy: {
-            createdAt: 'desc'
+            title:'asc'
         }
     })
     const count = await prisma.product.count();
