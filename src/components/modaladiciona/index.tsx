@@ -3,23 +3,31 @@ import React, { useState } from 'react';
 type ModalProps = {
     isOpen: boolean;
     onClose: () => void;
-    onSubmit: (produto: { nome: string, descricao: string, preco: string, img: string }) => void;
+    onSubmit: (produto: { title: string, description: string, price: number, image: string }) => void;
 }
 
 const AddProdutoModal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => {
-    const [nome, setNome] = useState('');
-    const [descricao, setDescricao] = useState('');
-    const [preco, setPreco] = useState('');
-    const [img, setImg] = useState('');
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
+    const [image, setImage] = useState('');
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
+        // Converta o preço para número antes de chamar onSubmit
+        const priceNumber = parseFloat(price);
+        
+        if (isNaN(priceNumber)) {
+            alert('Preço inválido'); // Adicione uma mensagem de erro apropriada se necessário
+            return;
+        }
+
         onSubmit({
-            nome,
-            descricao,
-            preco,
-            img,
+            title,
+            description,
+            price: priceNumber,
+            image
         });
 
         onClose();
@@ -36,8 +44,8 @@ const AddProdutoModal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) =>
                         <label className="block text-sm font-medium text-pink-700">Nome do Produto</label>
                         <input
                             type="text"
-                            value={nome}
-                            onChange={(e) => setNome(e.target.value)}
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
                             className="mt-1 block w-full p-2 border border-pink-300 rounded-md"
                             required
                         />
@@ -46,8 +54,8 @@ const AddProdutoModal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) =>
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-pink-700">Descrição</label>
                         <textarea
-                            value={descricao}
-                            onChange={(e) => setDescricao(e.target.value)}
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                             className="mt-1 block w-full p-2 border border-pink-300 rounded-md"
                             required
                         />
@@ -57,8 +65,8 @@ const AddProdutoModal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) =>
                         <label className="block text-sm font-medium text-pink-700">Preço</label>
                         <input
                             type="text"
-                            value={preco}
-                            onChange={(e) => setPreco(e.target.value)}
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
                             className="mt-1 block w-full p-2 border border-pink-300 rounded-md"
                             required
                         />
@@ -68,8 +76,8 @@ const AddProdutoModal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) =>
                         <label className="block text-sm font-medium text-pink-700">Caminho da Imagem</label>
                         <input
                             type="text"
-                            value={img}
-                            onChange={(e) => setImg(e.target.value)}
+                            value={image}
+                            onChange={(e) => setImage(e.target.value)}
                             className="mt-1 block w-full p-2 border border-pink-300 rounded-md"
                             required
                         />

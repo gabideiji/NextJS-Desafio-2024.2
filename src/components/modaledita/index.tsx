@@ -1,24 +1,25 @@
+import { title } from 'process';
 import React, { useState, useEffect } from 'react';
 
 type EditModalProps = {
     isOpen: boolean;
     onClose: () => void;
-    onSubmit: (produto: { nome: string, descricao: string, preco: string, img: string }) => void;
-    produtoInicial: { nome: string, descricao: string, preco: string, img: string };
+    onSubmit: (produto: { title: string, description: string, price: number, image: string }) => void;
+    produtoInicial: { title: string, description: string, price: number, image: string };
 }
 
 const EditProdutoModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSubmit, produtoInicial }) => {
-    const [nome, setNome] = useState(produtoInicial.nome);
-    const [descricao, setDescricao] = useState(produtoInicial.descricao);
-    const [preco, setPreco] = useState(produtoInicial.preco);
-    const [img, setImg] = useState(produtoInicial.img);
+    const [title, setNome] = useState(produtoInicial.title);
+    const [description, setDescricao] = useState(produtoInicial.description);
+    const [price, setPreco] = useState(produtoInicial.price);
+    const [image, setImg] = useState(produtoInicial.image);
 
     useEffect(() => {
         if (isOpen) {
-            setNome(produtoInicial.nome);
-            setDescricao(produtoInicial.descricao);
-            setPreco(produtoInicial.preco);
-            setImg(produtoInicial.img);
+            setNome(produtoInicial.title);
+            setDescricao(produtoInicial.description);
+            setPreco(produtoInicial.price);
+            setImg(produtoInicial.image);
         }
     }, [isOpen, produtoInicial]);
 
@@ -26,10 +27,10 @@ const EditProdutoModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSubmit,
         e.preventDefault();
 
         onSubmit({
-            nome,
-            descricao,
-            preco,
-            img,
+            title,
+            description,
+            price,
+            image,
         });
 
         onClose();
@@ -46,7 +47,7 @@ const EditProdutoModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSubmit,
                         <label className="block text-sm font-medium text-pink-700">Nome do Produto</label>
                         <input
                             type="text"
-                            value={nome}
+                            value={title}
                             onChange={(e) => setNome(e.target.value)}
                             className="mt-1 block w-full p-2 border border-pink-300 rounded-md"
                             required

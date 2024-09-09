@@ -74,3 +74,13 @@ export async function DeleteProduto (id: number | undefined) {
         }
     })
 }
+export async function AddProduto (produto: { title: string, description: string, price: number, image: string }) {
+    await prisma.product.create({
+        data: {
+            title: produto.title,
+            description: produto.description,
+            price: produto.price,
+            image: produto.image
+        }
+    })
+}
