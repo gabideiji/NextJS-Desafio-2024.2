@@ -1,9 +1,7 @@
 import Image from 'next/image';
-import LoginLayout from './layout';
 
 export default function Login() {
   return (
-    <LoginLayout>
  <section className="bg-gray-50 min-h-screen flex items-center justify-center">
       <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
         <div className="w-full md:w-1/2 px-8 md:px-16 flex flex-col">
@@ -43,7 +41,6 @@ export default function Login() {
         </div>
       </div>
     </section>
-    </LoginLayout>
    
   );
 }
