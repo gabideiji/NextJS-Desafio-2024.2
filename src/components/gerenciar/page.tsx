@@ -71,13 +71,13 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
 
       <table className="min-w-full bg-white text-left rounded-md">
         <thead>
-          <tr>
+          <tr className="text-gray-800"> 
             <th className="py-2 px-4 border-b">Nome do Produto</th>
             <th className="py-2 px-4 border-b">Valor</th>
             <th className="py-2 px-4 border-b">Ações</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-gray-800"> 
           {dados.length > 0 ? (
             dados.map((produto) => (
               <tr key={produto.id}>
@@ -85,7 +85,7 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
                 <td className="py-2 px-4 border-b">R${produto.price}</td>
                 <td className="py-2 px-4 border-b flex justify-center gap-2">
                   <button
-                    className="bg-pink-400 text-white px-2 py-1 rounded"
+                    className="bg-[#FF9E9E] text-white px-2 py-1 rounded"
                     onClick={() => {
                       setSelectedProduto(produto);
                       toggleViewModal(); 
@@ -94,7 +94,7 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
                     Visualizar
                   </button>
                   <button
-                    className="bg-pink-400 text-white px-2 py-1 rounded"
+                    className="bg-[#FF9E9E] text-white px-2 py-1 rounded"
                     onClick={() => {
                       setSelectedProduto(produto);
                       toggleEditModal(); 
@@ -121,7 +121,7 @@ const Gerenciamento = ({ dados }: { dados: LandingPagePosts[] }) => {
             ))
           ) : (
             <tr>
-              <td colSpan={3} className="py-4 text-center">
+              <td colSpan={3} className="py-4 text-center text-gray-800">
                 Nenhum produto disponível
               </td>
             </tr>

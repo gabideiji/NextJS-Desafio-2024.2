@@ -35,9 +35,9 @@ export default function Header() {
                     <Image
                         src='/logo/sanrio.svg'
                         alt="Logo do site"
-                        width={904}
-                        height={904}
-                        className="h-16 w-16 rounded-xl"
+                        width={150} 
+                        height={150} 
+                        className="h-24 w-24 rounded-xl" 
                     />
                 </Link>
                 <nav className='flex justify-end'>
