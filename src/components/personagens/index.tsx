@@ -17,6 +17,11 @@ export default function LandingPage() {
             title="My Melody" 
             />
               <CardsPersonagens 
+            src="/logo/final.png"
+            title="Hello Kitty" 
+            />
+            
+              <CardsPersonagens 
             src="/logo/cinnamonroll.jpg"
             title="Cinnamoroll" 
             />
@@ -24,11 +29,7 @@ export default function LandingPage() {
             src="/logo/littletwinstars.jpg"
             title="Little Twin Stars" 
             />
-            <CardsPersonagens 
-            src="/logo/badtz-Photoroom.png"
-            title="Badtz-Maru" 
-            />
-            
+          
         </div>
         
      </div>
